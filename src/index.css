@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --color-canvas: #F9F8F6;
+  --color-ink: #2C302E;
+  --color-sage: #8A9A86;
+  --color-sage-light: #A7B6A4;
+  --color-sage-dark: #687964;
+  --color-sand: #EFECE6;
+  --color-sand-warm: #E2DDD4;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+    background-color: #F9F8F6;
+    color: #2C302E;
+  }
+}
+
+/* Fluid Breathing Gradient Background */
+@keyframes breathingBackground {
+  0% {
+    transform: scale(1) translate(0%, 0%);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.08) translate(-1.5%, 2%);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1) translate(0%, 0%);
+    opacity: 0.55;
+  }
+}
+
+@keyframes gentlePulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 0.9;
+  }
+}
+
+.animate-breathe {
+  animation: breathingBackground 14s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: gentlePulse 6s ease-in-out infinite;
+}
+
+/* Mask Reveal animation classes */
+.mask-curtain {
+  position: absolute;
+  inset: 0;
+  background-color: #EFECE6;
+  z-index: 20;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: top;
+}
+
+.mask-curtain.revealed {
+  transform: translateY(-101%);
+}
+
+/* Custom Scrollbar for refined aesthetic */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F9F8F6;
+}
+::-webkit-scrollbar-thumb {
+  background: #D8D2C5;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8A9A86;
+}
